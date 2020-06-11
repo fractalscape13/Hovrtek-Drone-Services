@@ -77,10 +77,10 @@ function JobListScreen(
                 You will need to complete your profile before you can apply for jobs.
               </Text>
           <TouchableOpacity
-            style={styles.chatButton}
+            style={styles.startButton}
             onPress={() => navigation.navigate("Profile")}
           >
-            <Text style={styles.chatText}>
+            <Text style={styles.startText}>
               Continue
             </Text>
           </TouchableOpacity>
@@ -162,11 +162,6 @@ function JobListScreen(
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   projectCard: {
     width: 380,
     marginTop: 15,
@@ -198,7 +193,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 1,
-    // backgroundColor: "blue",
     marginTop: "45%",
     height: "100%",
   },
@@ -209,12 +203,12 @@ const styles = StyleSheet.create({
   subheaderWrapper: {
     marginBottom: 14,
   },
-  chatText: {
+  startText: {
     fontWeight: "bold",
     fontSize: 15,
     color: "white",
   },
-  chatButton: {
+  startButton: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#092455",
