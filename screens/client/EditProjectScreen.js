@@ -34,31 +34,6 @@ function EditProjectScreen(props, { editProject }) {
   const [isDateModalVisible, setIsDateModalVisible] = useState(false);
   const [isRecordingModalVisible, setIsRecordingModalVisible] = useState(false);
 
-
-  const openLocationModal = () => {
-    setIsLocationModalVisible(true);
-  };
-
-  const closeLocationModal = () => {
-    setIsLocationModalVisible(false);
-  };
-
-  const openDateModal = () => {
-    setIsDateModalVisible(true);
-  };
-
-  const closeDateModal = () => {
-    setIsDateModalVisible(false);
-  };
-
-  const openRecordingModal = () => {
-    setIsRecordingModalVisible(true);
-  };
-
-  const closeRecordingModal = () => {
-    setIsRecordingModalVisible(false);
-  };
-
   async function submit(){
     setLoadingActive(true)
     let locationCoordinates
@@ -111,14 +86,14 @@ function EditProjectScreen(props, { editProject }) {
           </View>
           <Text style={styles.detailsHeader}>Where:</Text>
 
-          <TouchableOpacity style={styles.button} onPress={openLocationModal} title={openLocationModal}>
+          <TouchableOpacity style={styles.button} onPress={() =>setIsLocationModalVisible(true)} title={() =>setIsLocationModalVisible(true)}>
         <Text style={styles.buttonText}>Project Location</Text>
       </TouchableOpacity>
           <Modal
         transparent={true}
         visible={isLocationModalVisible}
         animationType={slide}
-        onRequestClose={closeLocationModal}
+        onRequestClose={() =>setIsLocationModalVisible(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.innerContainer}>
@@ -134,7 +109,7 @@ function EditProjectScreen(props, { editProject }) {
         />
 
 <View styles={styles.cancelWrapper}>
-            <TouchableOpacity style={styles.editButton} onPress={closeLocationModal}>
+            <TouchableOpacity style={styles.editButton} onPress={() =>setIsLocationModalVisible(false)}>
               <Text style={styles.editText}>{APP_STRINGS.choose}</Text>
             </TouchableOpacity> 
           </View>
@@ -142,14 +117,14 @@ function EditProjectScreen(props, { editProject }) {
       </Modal>
 
           <Text style={styles.detailsHeader}>When:</Text>
-          <TouchableOpacity style={styles.button} onPress={openDateModal} title={openDateModal}>
+          <TouchableOpacity style={styles.button} onPress={() =>setIsDateModalVisible(true)} title={() =>setIsDateModalVisible(true)}>
         <Text style={styles.buttonText}>Project Date</Text>
       </TouchableOpacity>
           <Modal
         transparent={true}
         visible={isDateModalVisible}
         animationType={slide}
-        onRequestClose={closeDateModal}
+        onRequestClose={() =>setIsDateModalVisible(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.innerContainer}>
@@ -165,21 +140,21 @@ function EditProjectScreen(props, { editProject }) {
         />
 
 <View styles={styles.cancelWrapper}>
-            <TouchableOpacity style={styles.editButton} onPress={closeDateModal}>
+            <TouchableOpacity style={styles.editButton} onPress={() =>setIsDateModalVisible(false)}>
               <Text style={styles.editText}>{APP_STRINGS.choose}</Text>
             </TouchableOpacity> 
           </View>
         </View>
       </Modal>
           <Text style={styles.detailsHeader}>What:</Text>
-          <TouchableOpacity style={styles.button} onPress={openRecordingModal} title={openRecordingModal}>
+          <TouchableOpacity style={styles.button} onPress={() =>setIsRecordingModalVisible(true)} title={() =>setIsRecordingModalVisible(true)}>
         <Text style={styles.buttonText}>Project Recording</Text>
       </TouchableOpacity>
           <Modal
         transparent={true}
         visible={isRecordingModalVisible}
         animationType={slide}
-        onRequestClose={closeRecordingModal}
+        onRequestClose={() =>setIsRecordingModalVisible(false)}
       >
         <View style={styles.modalContainer}>
           <View style={styles.innerContainer}>
@@ -195,7 +170,7 @@ function EditProjectScreen(props, { editProject }) {
         />
 
 <View styles={styles.cancelWrapper}>
-            <TouchableOpacity style={styles.editButton} onPress={closeRecordingModal}>
+            <TouchableOpacity style={styles.editButton} onPress={() =>setIsRecordingModalVisible(false)}>
               <Text style={styles.editText}>{APP_STRINGS.choose}</Text>
             </TouchableOpacity> 
           </View>
