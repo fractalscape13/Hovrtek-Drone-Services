@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -8,14 +8,18 @@ import {
   Modal,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import DateTimePicker from "react-native-modal-datetime-picker";
 import { editProject } from "../../actions/projects";
 import { connect } from "react-redux";
 import LoadingScreen from "../../screens/LoadingScreen"
 import Geocoder from "react-native-geocoding";
+import moment from "moment";
 import {API_KEY} from "../../geocoder"
 import { APP_STRINGS } from "../../constants/index";
+import { PassSetDate } from "../../screens/client/NewProjectScreenOne";
+import { PassDateState } from "../../screens/client/NewProjectScreenOne";
 Geocoder.init(API_KEY);
-
+setDateState
 const {
   slide
 } = APP_STRINGS;
@@ -30,9 +34,16 @@ function EditProjectScreen(props, { editProject }) {
   const [ recording, setRecording ] = useState(projectDetails.recording);
   const [loadingActive, setLoadingActive] = useState(false)
 
+  const setDateState = useContext(PassSetDate);
+  const dateState = useContext(PassDateState);
+
   const [isLocationModalVisible, setIsLocationModalVisible] = useState(false);
   const [isDateModalVisible, setIsDateModalVisible] = useState(false);
   const [isRecordingModalVisible, setIsRecordingModalVisible] = useState(false);
+
+  const handlePicker = (date) => {
+    setDateState(moment(date).format("MMMM, DD  YYYY"));
+  };
 
   async function submit(){
     setLoadingActive(true)
@@ -117,35 +128,24 @@ function EditProjectScreen(props, { editProject }) {
       </Modal>
 
           <Text style={styles.detailsHeader}>When:</Text>
-          <TouchableOpacity style={styles.button} onPress={() =>setIsDateModalVisible(true)} title={() =>setIsDateModalVisible(true)}>
         <Text style={styles.buttonText}>Project Date</Text>
-      </TouchableOpacity>
-          <Modal
-        transparent={true}
-        visible={isDateModalVisible}
-        animationType={slide}
-        onRequestClose={() =>setIsDateModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.innerContainer}>
-            <Text style={styles.modalText}>Project Recording</Text>
-          </View>
+      <View style={styles.pickerWrapper}>
+      <TouchableOpacity style={styles.button} onPress={() =>setIsDateModalVisible(true)}>
+        {dateState ? (
+          <Text style={styles.buttonText}>{dateState}</Text>
+        ) : (
+          <Text style={styles.buttonText}>Pick a Date</Text>
+        )}
 
-          <TextInput
-          multiline={true}
-          style={styles.input}
-          onChangeText={setDate}
-          autoFocus={true}
+        <DateTimePicker
+          isVisible={isDateModalVisible}
+          onConfirm={handlePicker}
+          onCancel={() =>setIsDateModalVisible(false)}
+          mode={"date"}
           value={date}
         />
-
-<View styles={styles.cancelWrapper}>
-            <TouchableOpacity style={styles.editButton} onPress={() =>setIsDateModalVisible(false)}>
-              <Text style={styles.editText}>{APP_STRINGS.choose}</Text>
-            </TouchableOpacity> 
-          </View>
-        </View>
-      </Modal>
+      </TouchableOpacity>
+    </View>
           <Text style={styles.detailsHeader}>What:</Text>
           <TouchableOpacity style={styles.button} onPress={() =>setIsRecordingModalVisible(true)} title={() =>setIsRecordingModalVisible(true)}>
         <Text style={styles.buttonText}>Project Recording</Text>
