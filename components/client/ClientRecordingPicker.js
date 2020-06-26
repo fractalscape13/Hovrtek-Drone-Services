@@ -54,8 +54,8 @@ const ClientRecordingPicker = (props) => {
               multiline={true}
             />
           </View>
-          <TouchableOpacity style={styles.chatButton} onPress={closeModal}>
-            <Text style={styles.chatText}>{APP_STRINGS.choose}</Text>
+          <TouchableOpacity style={styles.chooseButton} onPress={closeModal}>
+            <Text style={styles.chooseText}>{APP_STRINGS.choose}</Text>
           </TouchableOpacity> 
         </View>
       </Modal>
@@ -87,7 +87,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 10,
     padding: 10,
-    backgroundColor: "#474A49",
+    // backgroundColor: "#474A49",
+    backgroundColor: "#161616",
+    borderColor: "#DDE2E4",
+    borderWidth: 1,
     marginTop: 200,
     marginLeft: 5,
     marginRight: 5,
@@ -129,12 +132,12 @@ const styles = StyleSheet.create({
     padding: 5,
     color: "#DDE2E4"
   },
-  chatText: {
+  chooseText: {
     fontWeight: "bold",
     fontSize: 15,
     color: "#161616",
   },
-  chatButton: {
+  chooseButton: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#DDE2E4",

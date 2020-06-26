@@ -71,8 +71,8 @@ const ClientLightPicker = () => {
               {renderTextInput()}
           </View>
           <View styles={styles.cancelWrapper}>
-          <TouchableOpacity style={styles.chatButton} onPress={() => setIsModalVisible(false)}>
-              <Text style={styles.chatText}>{APP_STRINGS.save}</Text>
+          <TouchableOpacity style={styles.chooseButton} onPress={() => setIsModalVisible(false)}>
+              <Text style={styles.chooseText}>{APP_STRINGS.save}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -87,7 +87,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 10,
     padding: 10,
-    backgroundColor: "#474A49",
+    // backgroundColor: "#474A49",
+    backgroundColor: "#161616",
+    borderColor: "#DDE2E4",
+    borderWidth: 1,
     marginTop: 200,
     marginLeft: 5,
     marginRight: 5,
@@ -116,17 +119,12 @@ const styles = StyleSheet.create({
   modalShowing: {
     opacity: .5,
   }, 
-  chatText: {
-    fontWeight: "bold",
-    fontSize: 15,
-    color: "#DDE2E4",
-  },
-  chatText: {
+  chooseText: {
     fontWeight: "bold",
     fontSize: 15,
     color: "#161616",
   },
-  chatButton: {
+  chooseButton: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#DDE2E4",

@@ -72,8 +72,8 @@ const ClientLocationPicker = (props) => {
             />
           </View>
           <View styles={styles.cancelWrapper}>
-            <TouchableOpacity style={styles.chatButton} onPress={closeModal}>
-              <Text style={styles.chatText}>{APP_STRINGS.choose}</Text>
+            <TouchableOpacity style={styles.chooseButton} onPress={closeModal}>
+              <Text style={styles.chooseText}>{APP_STRINGS.choose}</Text>
             </TouchableOpacity> 
           </View>
         </View>
@@ -134,12 +134,12 @@ const styles = StyleSheet.create({
     padding: 5,
     color: "#DDE2E4"
   },
-  chatText: {
+  chooseText: {
     fontWeight: "bold",
     fontSize: 15,
     color: "#161616",
   },
-  chatButton: {
+  chooseButton: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "#DDE2E4",
