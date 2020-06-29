@@ -18,6 +18,7 @@ import _ from "lodash";
 import DroneExperiencePicker from "../../components/pilot/DroneExperiencePicker";
 import DroneTypePicker from "../../components/pilot/DroneTypePicker";
 import BioPicker from "../../components/pilot/BioPicker";
+import DatePicker from "../../components/pilot/DatePicker";
 import { APP_STRINGS } from '../../constants/index';
 import InsuranceRadio from "../../components/pilot/InsuranceRadio";
 
@@ -25,6 +26,9 @@ import InsuranceRadio from "../../components/pilot/InsuranceRadio";
 export const PassSetPersonalBio = React.createContext();
 export const PassSetYearsOfExperience = React.createContext();
 export const PassYearsOfExperienceState = React.createContext();
+
+export const PassSetFaaLicenseExp = React.createContext();
+export const PassFaaLicenseExpState = React.createContext();
 
 export const PassSetDroneType = React.createContext();
 export const PassDroneTypeState = React.createContext();
@@ -72,7 +76,7 @@ function PilotProfileSetupPageOneScreen(props) {
     pilotLocationPlaceHolder = currentUserProps.pilotLocation;
     personalBioPlaceHolder = currentUserProps.personalBio;
     yearsOfExperiencePlaceHolder = currentUserProps.yearsOfExperience;
-    faaLicenseExpPlaceHolder = currentUserProps.faaLicenseExpPlace;
+    faaLicenseExpPlaceHolder = currentUserProps.faaLicenseExp;
     insuredStatusPlaceHolder = currentUserProps.insuredStatus;
     travelStatusPlaceHolder = currentUserProps.travelStatus;
     droneTypePlaceHolder = currentUserProps.droneType;
@@ -166,7 +170,24 @@ function PilotProfileSetupPageOneScreen(props) {
           <Text style={styles.bodyText}>{modelDrone}</Text>
         )}
 
-     
+<Text style={styles.bodyText}>{faaLicenseExp}</Text>
+<Text style={styles.bodyText}>
+             Please Provide FAA License Expiration Date
+          </Text>
+        {currentUserProps ? (
+          <View style={styles.droneExpWrapper}>
+            <PassSetFaaLicenseExp.Provider value={setFaaLicenseExp}>
+              <PassFaaLicenseExpState.Provider value={faaLicenseExp}>
+                <DatePicker setIsModalActive={setIsModalActive}/>
+              </PassFaaLicenseExpState.Provider>
+            </PassSetFaaLicenseExp.Provider>
+          </View>
+        ) : (
+          <Text style={styles.bodyText}>
+             Please Provide FAA License Expiration Date
+          </Text>
+        )}
+
         {currentUserProps && (
           <View style={styles.radioWrapper}>
             <Text style={styles.radioText}>

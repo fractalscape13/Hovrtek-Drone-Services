@@ -22,8 +22,6 @@ import AirMapRadio from "../../components/pilot/AirMapRadio";
 import FourHundredRadio from "../../components/pilot/FourHundredRadio";
 
 // context hook stuff
-export const PassSetFaaLicenseContext = React.createContext();
-export const PassFaaLicenseState = React.createContext();
 export const PassSetTravelStatus = React.createContext();
 export const PassTravelStatusState = React.createContext();
 export const PassSetFourHundred = React.createContext();
@@ -41,8 +39,7 @@ function PilotProfileSetupPageTwoScreen(props) {
   let userID = user.uid;
   const list = props.listOfProfiles;
   let currentUserProps = list.find((x) => x.userID === userID);
-  if (currentUserProps) {
-  }
+
   let pilotLocationPlaceHolder = "";
   let personalBioPlaceHolder = "";
   let yearsOfExperiencePlaceHolder = "";
@@ -112,24 +109,8 @@ function PilotProfileSetupPageTwoScreen(props) {
     }
   };
   return (
-    <View style={[styles.container, isModalActive ? styles.opaque : '']}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Text style={styles.bodyText}>
-          Please Provide FAA License Expiration Date
-        </Text>
-        {currentUserProps ? (
-          <View>
-                <DatePicker
-                  setFaaLicenseExp={setFaaLicenseExp}
-                  faaLicenseExp={faaLicenseExp}
-                  setIsModalActive={setIsModalActive}
-                />
-          </View>
-        ) : (
-          <Text style={styles.bodyText}>
-            Please Provide FAA License Expiration Date
-          </Text>
-        )}
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={[{ flexGrow: 1 }, isModalActive ? styles.opaque : '']}>
 
         {currentUserProps && (
           <View style={styles.radioWrapper}>
