@@ -126,8 +126,8 @@ function PilotProfileSetupPageOneScreen(props) {
   };
 
   return (
-    <View style={[styles.container, isModalActive ? styles.opaque : '']}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={[{ flexGrow: 1, backgroundColor: "#161616",  }, isModalActive ? styles.opaque : '']}>
         <Text style={styles.bodyText}>{briefSummary}</Text>
         {currentUserProps ? (
           <View style={styles.droneExpWrapper}>
@@ -194,7 +194,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "#161616",
-    alignItems: "center",
     height: "100%",
     paddingTop: "15%"
   },

@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
   scrollWrapper: {
     width: "100%",
     paddingTop: "10%",
+    backgroundColor: "#161616",
   },
   newProjectListTextWrapper: {
     marginBottom: 100,
