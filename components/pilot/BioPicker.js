@@ -48,7 +48,7 @@ const BioPicker = (props) => {
     return (
       <TouchableOpacity style={styles.button} onPress={openModal} title={title}>
         {personalBio ? (
-          <Text style={styles.buttonText}>{personalBio}</Text>
+          <Text style={styles.buttonText}>Summary set</Text>
         ) : (
           <Text style={styles.buttonText}>Brief Summary</Text>
         )}

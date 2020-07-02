@@ -6,6 +6,7 @@ import {
   Alert,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import personIcon from "../../assets/personIcon.png";
@@ -59,7 +60,7 @@ function ClientProfileScreen(props) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {user && profileDetails ? (
         <View>
           <Image source={princePic01} style={styles.backgroundImage} />
@@ -128,7 +129,7 @@ function ClientProfileScreen(props) {
       ) : (
         <Text>User unavailable</Text>
       )}
-    </View>
+    </ScrollView>
   );
 }
 

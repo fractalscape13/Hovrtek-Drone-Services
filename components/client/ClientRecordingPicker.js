@@ -66,7 +66,7 @@ const ClientRecordingPicker = (props) => {
           onPress={openModal}
           title={"Open modal"}
         >
-          <Text style={styles.buttonText}>{recordingState}</Text>
+          <Text style={styles.buttonText}>Description set</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity

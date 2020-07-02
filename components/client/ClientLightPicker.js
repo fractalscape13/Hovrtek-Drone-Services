@@ -79,7 +79,7 @@ const ClientLightPicker = (props) => {
           </View>
           <View styles={styles.cancelWrapper}>
           <TouchableOpacity style={styles.chatButton} onPress={closeModal}>
-              <Text style={styles.chatText}>{APP_STRINGS.save}</Text>
+              <Text style={styles.chatText}>Choose</Text>
             </TouchableOpacity>
           </View>
         </View>
